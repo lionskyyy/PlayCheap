@@ -1,0 +1,231 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat', Arial, sans-serif;
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.body-bg {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    background: url('bg.png') center center / cover no-repeat;
+    filter: blur(12px) brightness(0.9);
+    pointer-events: none;
+    transition: filter 0.6s, background 0.6s;
+}
+
+body:not(.dark-theme) .body-bg {
+    background: url('bgw.png') center center / cover no-repeat;
+    filter: blur(12px) brightness(0.9) invert(1);
+    transition: filter 0.6s, background 0.6s;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    background: #fff;
+    border-bottom: 1px solid #666666;
+    position: relative;
+    z-index: 2;
+}
+
+.steam-logo {
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%) translateY(10%);
+    width: 45vw;
+    height: auto;
+    opacity: 0.3;
+    z-index: 100;
+    transition: opacity 0.2s;
+}
+
+
+.nav-logo {
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #111;
+    text-decoration: none;
+    margin: 0 40px;
+    transition: color 0.2s;
+}
+
+.nav-logo:hover {
+    color: #8f0000;
+}
+
+.nav-center {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav-btn {
+    position: static;
+    left: unset;
+    top: unset;
+    transform: none;
+    background: #4b4b4b;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 28px;
+    font-size: 1rem;
+    font-family: 'Montserrat', Arial, sans-serif;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    cursor: pointer;
+    outline: none;
+}
+
+.nav-btn:hover {
+    background: #222;
+    color: #fff;
+}
+
+.home-center {
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+    width: 100%;
+}
+
+.home-title {
+    font-size: 44pt;
+    font-weight: 700;
+    color: #111;
+    margin: 0 0 36px 0;
+    text-align: center;
+    /* Радужное ненасыщенное свечение */
+    text-shadow:
+        0 0 12px #a3a3ff,
+        0 0 24px #a3ffd6,
+        0 0 36px #ffd6a3,
+        0 0 48px #ffa3c7,
+        0 0 60px #a3fff7;
+}
+
+.home-catalog-btn {
+    background: #111;
+    color: #fff;
+    border: none;
+    border-radius: 24px;
+    padding: 16px 48px;
+    font-size: 1.5rem;
+    font-family: 'Montserrat', Arial, sans-serif;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+    cursor: pointer;
+    outline: none;
+    pointer-events: auto;
+}
+
+.home-catalog-btn:hover {
+    background: #222;
+    color: #fff;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 13px;
+    left: 18px;
+    z-index: 3;
+    background: #fff;
+    color: #111;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: background 0.3s, color 0.3s;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+#theme-icon {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.theme-toggle:hover {
+    background: #eee;
+}
+
+/* Плавная смена темы */
+body, .navbar, .home-center, .home-title, .home-catalog-btn {
+    transition: background 0.6s, color 0.4s;
+}
+
+body.dark-theme {
+    background: #181818;
+    color: #f5f5f5;
+}
+
+body.dark-theme .navbar {
+    background: #232323;
+    border-bottom: 1px solid #333;
+}
+
+body.dark-theme .nav-logo,
+body.dark-theme .home-title {
+    color: #f5f5f5;
+    text-shadow:
+        0 0 12px rgba(163,163,255,0.2),
+        0 0 24px rgba(163,255,214,0.2),
+        0 0 36px rgba(255,214,163,0.2),
+        0 0 48px rgba(255,163,199,0.2),
+        0 0 60px rgba(163,255,247,0.2);
+}
+
+body.dark-theme .nav-btn,
+body.dark-theme .home-catalog-btn {
+    background: #3f3f3f;
+    color: #ffffff;
+}
+
+body.dark-theme .nav-btn:hover,
+body.dark-theme .home-catalog-btn:hover {
+    background: #bbb;
+    color: #181818;
+}
+
+body.dark-theme .theme-toggle {
+    background: #232323;
+    color: #f5f5f5;
+}
+
+body.dark-theme #theme-icon svg {
+    stroke: #f5f5f5;
+}
+
+body #theme-icon svg {
+    stroke: #111;
+}
+
+body:not(.dark-theme) {
+    background: #e4e4e4;
+    color: #111;
+}
